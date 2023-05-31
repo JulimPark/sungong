@@ -28,7 +28,9 @@ def push_start_data2(stu_id):
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11.to_csv('temp_csv.csv',index=False,mode='w')
     st1 = datetime.fromtimestamp(timestamp1)
+    
     st.write(f"시작시간: {st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}")
+    st.write(f"시작시간: {aaa.year}-{aaa.month}-{aaa.day} {aaa.hour}:{aaa.minute}:{aaa.second}")
 
 def push_start_data(stu_id):
     global id_time
