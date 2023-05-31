@@ -22,11 +22,9 @@ def call_data(docu_name):
 
 def push_start_data2(stu_id):
     aaa = datetime.now()
-    st.header(aaa.timestamp())
     aaa = aaa.astimezone(timezone('Asia/Seoul'))
-    st.header(aaa.timestamp())
     timestamp1 = aaa.timestamp()
-    temp_dict = {'시작시간':timestamp1}
+    temp_dict = {'시작시간':aaa}
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11.to_csv('temp_csv.csv',index=False,mode='w')
     st1 = datetime.fromtimestamp(timestamp1)
@@ -51,10 +49,9 @@ def push_end_data(stu_id):
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
     timestamp11 = df12.iat[0,0]
     bbb = datetime.now(timezone('Asia/Seoul'))
-    end_time = bbb.timestamp()
-    sungong = end_time - timestamp11
+    sungong = bbb - timestamp11
     st1 = datetime.fromtimestamp(timestamp11)
-    et1 = datetime.fromtimestamp(end_time)
+    et1 = datetime.fromtimestamp(bbb)
     
     id_time = f"{stu_id}_{et1.year}-{format(et1.month,'02')}-{format(et1.day,'02')} {format(et1.hour,'02')}:{format(et1.minute,'02')}:{format(et1.second,'02')}"
     doc_ref2 = db2.collection("sungong").document(id_time)
