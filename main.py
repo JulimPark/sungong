@@ -51,7 +51,6 @@ def push_end_data(stu_id):
     db2 = firestore.Client(credentials=creds, project="test-project-6e03a")
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
     timestamp11 = df12.iat[0,0]
-    st.write(type(timestamp11))
     st.dataframe(df12)
     bbb = datetime.now(timezone('Asia/Seoul'))
     sungong = bbb - timestamp11
@@ -60,9 +59,10 @@ def push_end_data(stu_id):
     
     id_time = f"{stu_id}_{et1.year}-{format(et1.month,'02')}-{format(et1.day,'02')} {format(et1.hour,'02')}:{format(et1.minute,'02')}:{format(et1.second,'02')}"
     doc_ref2 = db2.collection("sungong").document(id_time)
-    doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{format(st1.month,'02')}-{format(st1.day,'02')} {format(st1.hour,'02')}:{format(st1.minute,'02')}:{format(st1.second,'02')}",
-                  '마침시간':f"{et1.year}-{format(et1.month,'02')}-{format(et1.day,'02')} {format(et1.hour,'02')}:{format(et1.minute,'02')}:{format(et1.second,'02')}",
-                 '순공시간':sungong})
+#     doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{format(st1.month,'02')}-{format(st1.day,'02')} {format(st1.hour,'02')}:{format(st1.minute,'02')}:{format(st1.second,'02')}",
+#                   '마침시간':f"{et1.year}-{format(et1.month,'02')}-{format(et1.day,'02')} {format(et1.hour,'02')}:{format(et1.minute,'02')}:{format(et1.second,'02')}",
+#                  '순공시간':sungong})
+    doc_ref2.set({'aa':timestamp11,'bb':bbb}
     st.write(f"마침시간: {et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}")
     st.header(f"순공시간: {round(sungong,2)}초")
 
