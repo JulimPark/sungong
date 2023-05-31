@@ -27,7 +27,7 @@ def push_start_data2(stu_id):
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11.to_csv('temp_csv.csv',index=False,mode='w')
     st1 = datetime.fromtimestamp(timestamp1)
-    st.write(시작시간: f"{st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}")
+    st.write(f"시작시간: {st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}")
 
 def push_start_data(stu_id):
     global id_time
@@ -55,7 +55,7 @@ def push_end_data(stu_id):
     id_time = f"{stu_id}_{str(sungong)}"
     doc_ref2 = db2.collection("sungong").document(id_time)
     doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}",'마침시간':f"{et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}"})
-    st.write(마침시간: f"{et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}")
+    st.write(f"마침시간: {et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}")
     st.header(f"순공시간: {round(sungong,2)}초")
 
 start_button = st.button('시작')
