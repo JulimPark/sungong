@@ -6,7 +6,7 @@ from datetime import datetime
 import ast
 from google.cloud import firestore
 from google.oauth2 import service_account
-
+from pytz import timezone
 # Authenticate to Firestore with the JSON account key.
 import json
 def call_data(docu_name):
@@ -22,7 +22,7 @@ def call_data(docu_name):
 
 def push_start_data2(stu_id):
     aaa = datetime.now()
-    timestamp1 = datetime.now().timestamp()
+    timestamp1 = datetime.now(timezone('Asia/Seoul')).timestamp()
     temp_dict = {'시작시간':timestamp1}
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11.to_csv('temp_csv.csv',index=False,mode='w')
@@ -47,7 +47,7 @@ def push_end_data(stu_id):
     db2 = firestore.Client(credentials=creds, project="test-project-6e03a")
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
     timestamp11 = df12.iat[0,0]
-    end_time = datetime.now().timestamp()
+    end_time = datetime.now(timezone('Asia/Seoul')).timestamp()
     sungong = end_time - timestamp11
     st1 = datetime.fromtimestamp(timestamp11)
     et1 = datetime.fromtimestamp(end_time)
