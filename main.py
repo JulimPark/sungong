@@ -49,13 +49,13 @@ def push_end_data(stu_id):
     end_time = datetime.now().timestamp()
     sungong = end_time - timestamp11
     st1 = datetime.fromtimestamp(timestamp11)
-    et = datetime.fromtimestamp(end_time)
+    et1 = datetime.fromtimestamp(end_time)
     
     id_time = f"{stu_id}_{str(sungong)}"
     doc_ref2 = db2.collection("sungong").document(id_time)
-    doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}",'마침시간':str(end_time)})
+    doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}",'마침시간':f"{et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}"})
     st.write(f"마침시간: {end_time}")
-    st.header(f"순공시간: {sungong}")
+    st.header(f"순공시간: {format(sungong,'02')}")
 
 start_button = st.button('시작')
 end_button = st.button('마침')
