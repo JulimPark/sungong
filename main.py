@@ -21,8 +21,8 @@ def call_data(docu_name):
     return doc_dic
 
 def push_start_data2(stu_id):
-    aaa = datetime.now()
-    timestamp1 = datetime.now(timezone('Asia/Seoul')).timestamp()
+    aaa = datetime.now(timezone('Asia/Seoul'))
+    timestamp1 = aaa.timestamp()
     temp_dict = {'시작시간':timestamp1}
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11.to_csv('temp_csv.csv',index=False,mode='w')
@@ -47,7 +47,8 @@ def push_end_data(stu_id):
     db2 = firestore.Client(credentials=creds, project="test-project-6e03a")
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
     timestamp11 = df12.iat[0,0]
-    end_time = datetime.now(timezone('Asia/Seoul')).timestamp()
+    bbb = datetime.now(timezone('Asia/Seoul'))
+    end_time = bbb.timestamp()
     sungong = end_time - timestamp11
     st1 = datetime.fromtimestamp(timestamp11)
     et1 = datetime.fromtimestamp(end_time)
