@@ -21,7 +21,8 @@ def call_data(docu_name):
     return doc_dic
 
 def push_start_data2(stu_id):
-    aaa = datetime.now(timezone('Asia/Seoul'))
+    aaa = datetime.now()
+    aaa = aaa.astimezone(timezone('Asia/Seoul'))
     timestamp1 = aaa.timestamp()
     temp_dict = {'시작시간':timestamp1}
     df11 = pd.DataFrame(temp_dict, index=[0])
