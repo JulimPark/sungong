@@ -46,6 +46,8 @@ def push_end_data(stu_id):
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
     timestamp11 = df12.iat[0,0]
     end_time = datetime.now()
+    print(timestamp11)
+    print(end_time)
     sungong = end_time - timestamp11
     id_time = f"{stu_id}_{str(sungong)}"
     doc_ref2 = db2.collection("sungong").document(id_time)
