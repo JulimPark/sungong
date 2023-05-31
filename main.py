@@ -51,6 +51,7 @@ def push_end_data(stu_id):
     db2 = firestore.Client(credentials=creds, project="test-project-6e03a")
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
     timestamp11 = df12.iat[0,0]
+    st.write(timestamp11)
     st.dataframe(df12)
     bbb = datetime.now(timezone('Asia/Seoul'))
     sungong = bbb - timestamp11
