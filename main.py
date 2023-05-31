@@ -63,7 +63,7 @@ def push_end_data(stu_id):
     df12.iat[0,2] = bbb
     df12.iat[0,3] = bbb2
     st.dataframe(df12)
-    id_time = f"{stu_id}_{et1.year}-{format(et1.month,'02')}-{format(et1.day,'02')} {format(et1.hour,'02')}:{format(et1.minute,'02')}:{format(et1.second,'02')}"
+    id_time = f"{stu_id}_{bbb.year}-{format(bbb.month,'02')}-{format(bbb.day,'02')} {format(bbb.hour,'02')}:{format(bbb.minute,'02')}:{format(bbb.second,'02')}"
     doc_ref2 = db2.collection("sungong").document(id_time)
     doc_ref2.set({'학생id':stu_id,'시작시간':timestamp11,
                   '마침시간':bbb,
