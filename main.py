@@ -62,7 +62,7 @@ def push_end_data(stu_id):
 #     doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{format(st1.month,'02')}-{format(st1.day,'02')} {format(st1.hour,'02')}:{format(st1.minute,'02')}:{format(st1.second,'02')}",
 #                   '마침시간':f"{et1.year}-{format(et1.month,'02')}-{format(et1.day,'02')} {format(et1.hour,'02')}:{format(et1.minute,'02')}:{format(et1.second,'02')}",
 #                  '순공시간':sungong})
-    doc_ref2.set({'aa':timestamp11,'bb':bbb}
+    doc_ref2.set({'aa':timestamp11,'bb':bbb})
     st.write(f"마침시간: {et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}")
     st.header(f"순공시간: {round(sungong,2)}초")
 
