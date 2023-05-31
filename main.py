@@ -25,7 +25,10 @@ def push_start_data2(stu_id):
     aaa = aaa.astimezone(timezone('Asia/Seoul'))
     timestamp1 = aaa.timestamp()
     temp_dict = {'시작시간':aaa}
+    
     df11 = pd.DataFrame(temp_dict, index=[0])
+    df11['시작시간']= pd.to_datetime(df11['시작시간'])
+    
     df11.to_csv('temp_csv.csv',index=False,mode='w')
     st1 = datetime.fromtimestamp(timestamp1)
     
