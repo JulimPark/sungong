@@ -24,7 +24,7 @@ def push_start_data2(stu_id):
     aaa = datetime.now()
     aaa = aaa.astimezone(timezone('Asia/Seoul'))
     timestamp1 = aaa.timestamp()
-    temp_dict = {'시작시간':aaa}
+    temp_dict = {'시작시간':aaa,'시작스탬프':timestamp1}
     
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11['시작시간']= pd.to_datetime(df11['시작시간'])
@@ -51,9 +51,11 @@ def push_end_data(stu_id):
     db2 = firestore.Client(credentials=creds, project="test-project-6e03a")
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
     timestamp11 = df12.iat[0,0]
+    timestamp22 = df12.iat[0,1]
     st.dataframe(df12)
     bbb = datetime.now(timezone('Asia/Seoul'))
-    sungong = bbb - timestamp11
+    bbb2 = bbb.timestamp()
+    sungong = bbb2 - timestamp22
     st1 = datetime.fromtimestamp(timestamp11)
     et1 = datetime.fromtimestamp(bbb)
     
