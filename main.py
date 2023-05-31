@@ -48,12 +48,12 @@ def push_end_data(stu_id):
     timestamp11 = df12.iat[0,0]
     end_time = datetime.now().timestamp()
     sungong = end_time - timestamp11
-    st = datetime.fromtimestamp(timestamp11)
+    st1 = datetime.fromtimestamp(timestamp11)
     et = datetime.fromtimestamp(end_time)
     
     id_time = f"{stu_id}_{str(sungong)}"
     doc_ref2 = db2.collection("sungong").document(id_time)
-    doc_ref2.set({'학생id':stu_id,'시작시간':f"{st.year}-{st.month}-{st.day} {st.hour}:{st.minute}:{st.second}",'마침시간':str(end_time)})
+    doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}",'마침시간':str(end_time)})
     st.write(f"마침시간: {end_time}")
     st.header(f"순공시간: {sungong}")
 
