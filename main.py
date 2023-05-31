@@ -22,7 +22,7 @@ def call_data(docu_name):
 
 def push_start_data2(stu_id):
     aaa = datetime.now()
-    timestamp1 = aaa.timestamp()
+    timestamp1 = datetime.now()
     temp_dict = {'시작시간':timestamp1}
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11.to_csv('temp_csv.csv',index=False,mode='w')
