@@ -64,10 +64,10 @@ def push_end_data(stu_id):
     doc_ref2 = db2.collection("sungong").document(id_time)
     doc_ref2.set({'학생id':stu_id,'시작시간':timestamp11,
                   '마침시간':bbb,
-                 '순공시간':sungong})
+                 '순공시간':round(sungong,2))
 #     doc_ref2.set({'aa':timestamp11,'bb':bbb})
     st.write(f"마침시간: {bbb}")
-    st.header(f"순공시간: {round(bbb-timestamp11,2)}초")
+    st.header(f"순공시간: {round(sungong,2)}초")
 
 start_button = st.button('시작')
 end_button = st.button('마침')
