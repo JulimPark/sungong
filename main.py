@@ -50,6 +50,7 @@ def push_end_data(stu_id):
     creds = service_account.Credentials.from_service_account_info(key_dict)
     db2 = firestore.Client(credentials=creds, project="test-project-6e03a")
     df12 = pd.DataFrame(pd.read_csv('temp_csv.csv'))
+    df12['시작시간']= pd.to_datetime(df12['시작시간'])
     timestamp11 = df12.iat[0,0]
     timestamp22 = df12.iat[0,1]
     st.dataframe(df12)
