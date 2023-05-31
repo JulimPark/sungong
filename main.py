@@ -26,6 +26,7 @@ def push_start_data2(stu_id):
     temp_dict = {'시작시간':timestamp1}
     df11 = pd.DataFrame(temp_dict, index=[0])
     df11.to_csv('temp_csv.csv',index=False,mode='w')
+    st.write(f"시작시간: {timestamp1}")
 
 def push_start_data(stu_id):
     global id_time
@@ -47,12 +48,12 @@ def push_end_data(stu_id):
     df12.iat[0,0] = pd.to_datetime(df12['시작시간'])
     timestamp11 = df12.iat[0,0]
     end_time = datetime.now()
-    print(timestamp11)
-    print(end_time)
     sungong = end_time - timestamp11
     id_time = f"{stu_id}_{str(sungong)}"
     doc_ref2 = db2.collection("sungong").document(id_time)
-    doc_ref2.set({'학생id':stu_id,'시작시간':timestamp11,'마침시간':end_time})
+    doc_ref2.set({'학생id':stu_id,'시작시간':str(timestamp11),'마침시간':str(end_time)})
+    st.write(f"시작시간: {timestamp1}")
+    st.header(f"순공시간: {sungong}")
 
 start_button = st.button('시작')
 end_button = st.button('마침')
