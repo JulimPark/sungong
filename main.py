@@ -52,7 +52,7 @@ def push_end_data(stu_id):
     st1 = datetime.fromtimestamp(timestamp11)
     et1 = datetime.fromtimestamp(end_time)
     
-    id_time = f"{stu_id}_{str(sungong)}"
+    id_time = f"{stu_id}_{et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}"
     doc_ref2 = db2.collection("sungong").document(id_time)
     doc_ref2.set({'학생id':stu_id,'시작시간':f"{st1.year}-{st1.month}-{st1.day} {st1.hour}:{st1.minute}:{st1.second}",'마침시간':f"{et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}"})
     st.write(f"마침시간: {et1.year}-{et1.month}-{et1.day} {et1.hour}:{et1.minute}:{et1.second}")
