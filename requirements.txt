@@ -1,0 +1,7 @@
+streamlit
+pandas
+numpy
+google-auth-oauthlib==0.4.6 
+google-cloud-firestore==2.3.4
+seaborn
+datetime
