@@ -57,7 +57,7 @@ def push_end_data(stu_id):
     bbb2 = bbb.timestamp()
     sungong = bbb2 - timestamp22
     st1 = datetime.fromtimestamp(timestamp22)
-    et1 = datetime.fromtimestamp(bbb)
+    et1 = datetime.fromtimestamp(bbb2)
     
     id_time = f"{stu_id}_{et1.year}-{format(et1.month,'02')}-{format(et1.day,'02')} {format(et1.hour,'02')}:{format(et1.minute,'02')}:{format(et1.second,'02')}"
     doc_ref2 = db2.collection("sungong").document(id_time)
